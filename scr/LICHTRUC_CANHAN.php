@@ -17,6 +17,8 @@ SELECT
     taikhoan.hoten AS nguoitrc,
     lichtruc.ngaytruc,
     IFNULL(sukien.tensukien, 'Không có sự kiện') AS tensukien,
+    dkthamquan.tendoan,
+    IFNULL(dkthamquan.tendoan, 'Không có đoàn tham quan') AS tendoan,
     phancong.trangthai,
     phancong.nguoitruccu,
     phancong.lydo,
@@ -27,10 +29,13 @@ JOIN
     lichtruc ON phancong.idtruc = lichtruc.idtruc
 LEFT JOIN 
     sukien ON phancong.id = sukien.id
+LEFT JOIN 
+    dkthamquan ON phancong.idtq = dkthamquan.idtq
 JOIN 
     taikhoan ON phancong.idnhanvien = taikhoan.idnhanvien
 WHERE 
-    phancong.idnhanvien = $idnhanvien_dangnhap
+    phancong.idnhanvien = $idnhanvien_dangnhap;
+
 ";
 $kq = mysqli_query($conn, $sql) or die("Không thể truy vấn: " . mysqli_error($conn));
 ?>
@@ -53,7 +58,9 @@ $kq = mysqli_query($conn, $sql) or die("Không thể truy vấn: " . mysqli_erro
                             <th>Sự kiện</th>
                             <th>Trạng thái</th>
                             <th>Người trực cũ</th>
+                        
                             <th>Lý do</th>
+                            <th>DS tham quan</th>
                             <th>Người duyệt</th>
                             <th>Tuỳ chọn</th>
                         </tr>
@@ -69,6 +76,9 @@ $kq = mysqli_query($conn, $sql) or die("Không thể truy vấn: " . mysqli_erro
                             echo "<td>" . $row['trangthai'] . "</td>";
                             echo "<td>" . $row['nguoitruccu'] . "</td>";
                             echo "<td>" . $row['lydo'] . "</td>";
+
+                            echo "<td>" . $row['tendoan'] . "</td>";
+
                             echo "<td>" . $row['nguoiduyet'] . "</td>";
                             echo "<td>";
                             if (empty($row['lydo'])) {

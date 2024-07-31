@@ -112,7 +112,7 @@
 						
                         <div>
                             <h3 class="navbar-brand" style="padding-left: 100px;"> Trà Vinh</h3></br>
-                            <p class="navbar-brand">Miền Đất Thuận Thiên</p>
+                            <p class="navbar-brand">Miền Đất Tình Người</p>
                         </div>
 
 

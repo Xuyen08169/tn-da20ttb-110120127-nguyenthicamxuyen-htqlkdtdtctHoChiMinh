@@ -20,6 +20,7 @@ include("htrangchu.php");
     text-align: justify;
     line-height: 1.4;
     font-family: system-ui;
+    color: black;
 }
  .ngay{
 

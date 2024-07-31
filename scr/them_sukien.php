@@ -126,19 +126,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 </div>
 
                 <div class="txt-gv-lb">
-                    <label>Người đăng:</label>
-                    <select name="idnhanvien">
-                        <?php
-                            $sql = "SELECT idnhanvien, hoten FROM taikhoan WHERE quyen= 0";
-                            $kq = mysqli_query($conn, $sql) or die("Không thể thêm: " . mysqli_error($conn));
-                            while ($row = mysqli_fetch_assoc($kq)) {
-                                $idnhanvien = $row['idnhanvien'];
-                                $hoten = $row['hoten'];
-                                echo "<option value=\"$idnhanvien\">$hoten</option>";
-                            }
-                        ?>
-                    </select>
-                </div>
+    <label>Người đăng:</label>
+    <select name="idnhanvien">
+        <?php
+        $sql = "SELECT idnhanvien, hoten FROM taikhoan WHERE quyen = 0";
+        $kq = mysqli_query($conn, $sql) or die("Không thể thêm: " . mysqli_error($conn));
+        while ($row = mysqli_fetch_assoc($kq)) {
+            $idnhanvien = $row['idnhanvien'];
+            $hoten = $row['hoten'];
+            $selected = '';
+            if (isset($_SESSION['idnhanvien']) && $_SESSION['idnhanvien'] == $idnhanvien) {
+                $selected = 'selected="selected"';
+            }
+            echo "<option value=\"$idnhanvien\" $selected>$hoten</option>";
+        }
+        ?>
+    </select>
+</div>
 
                 <div class="txt-gv-lb">
                     <label> Ngày đăng:</label>

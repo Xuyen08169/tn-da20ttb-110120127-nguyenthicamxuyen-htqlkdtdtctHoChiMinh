@@ -12,6 +12,7 @@ SELECT
     phancong.idpc,
     lichtruc.ngaytruc,
     IFNULL(sukien.tensukien, 'Không có sự kiện') AS tensukien,
+    IFNULL(dkthamquan.tendoan, 'Không có tham quan') AS tendoan,
     taikhoan.hoten AS nguoitrc
 FROM 
     phancong
@@ -19,11 +20,14 @@ JOIN
     lichtruc ON phancong.idtruc = lichtruc.idtruc
 LEFT JOIN 
     sukien ON phancong.id = sukien.id
+LEFT JOIN 
+    dkthamquan ON phancong.idtq = dkthamquan.idtq
 JOIN 
     taikhoan ON phancong.idnhanvien = taikhoan.idnhanvien
 WHERE 
     MONTH(lichtruc.ngaytruc) = $thang
     AND YEAR(lichtruc.ngaytruc) = $nam
+
 ";
 $kq = mysqli_query($conn, $sql) or die("Không thể truy vấn: " . mysqli_error($conn));
 ?>
@@ -70,6 +74,7 @@ $kq = mysqli_query($conn, $sql) or die("Không thể truy vấn: " . mysqli_erro
                             <th>ID</th>
                             <th>Ngày trực</th>
                             <th>Sự kiện</th>
+                            <th> Đoàn tham quan</th>
                             <th>Người trực</th>
                         </tr>
                     </thead>
@@ -81,6 +86,7 @@ $kq = mysqli_query($conn, $sql) or die("Không thể truy vấn: " . mysqli_erro
                             echo "<td>" . $row['idpc'] . "</td>";
                             echo "<td>" . date('d/m/Y', strtotime($row['ngaytruc'])) . "</td>";
                             echo "<td>" . $row['tensukien'] . "</td>";
+                            echo "<td>" . $row['tendoan'] . "</td>";
                             echo "<td>" . $row['nguoitrc'] . "</td>";
                             echo "</tr>";
                         }

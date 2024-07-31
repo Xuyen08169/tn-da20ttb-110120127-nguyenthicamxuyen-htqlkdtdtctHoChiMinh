@@ -30,7 +30,7 @@ include("header.php");
             <!-- -------------------- -->
            
 
-            <div class="txt-gv-top">
+            <!-- <div class="txt-gv-top">
               
                 <div class="txt-gv-lb">
                     <label>Người trực:</label>
@@ -49,7 +49,7 @@ include("header.php");
                 </div>
                 
                 
-            </div>
+            </div> -->
             <!-- ---------------------------------- -->
             <div class="txt-gv-top">
               
@@ -103,6 +103,8 @@ include("header.php");
                         
 
                 </div>
+
+                
                 
               
               

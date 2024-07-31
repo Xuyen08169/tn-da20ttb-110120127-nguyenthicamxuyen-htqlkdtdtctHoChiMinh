@@ -24,6 +24,8 @@ if (isset($_GET['id'])) {
         echo "<p><strong>Trạng thái:</strong> " . htmlspecialchars($event['trangthai']) . "</p>";
         echo "<p><strong>Người trực cũ:</strong> " . htmlspecialchars($event['nguoitruccu']) . "</p>";
         echo "<p><strong>Lý do:</strong> " . htmlspecialchars($event['lydo']) . "</p>";
+
+      
         echo "<p><strong>Người duyệt:</strong> " . htmlspecialchars($event['nguoiduyet']) . "</p>";
         echo "<p><strong>Ngày duyệt:</strong> " . date('d/m/Y', strtotime($event['ngayduyet'])) . "</p>";
 

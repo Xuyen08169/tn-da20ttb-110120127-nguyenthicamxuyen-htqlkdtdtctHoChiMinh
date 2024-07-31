@@ -54,6 +54,7 @@ include("ketnoi.php");
                         $kq3 = mysqli_query($conn, $sql3) or die("Không thể xuất thông tin " . mysqli_error());
                         $sukien = mysqli_fetch_array($kq3);
 
+                        
 
                 
                         // $idnhanviens = $row["idnhanvien"];//////////nếu không có khóa ngoại thì ko cần dùng đến

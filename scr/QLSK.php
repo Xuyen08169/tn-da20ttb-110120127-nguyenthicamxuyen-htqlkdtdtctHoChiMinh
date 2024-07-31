@@ -66,7 +66,7 @@ function truncateString($string, $limit = 15) {
 
             echo "<td>" . date('d/m/Y', strtotime($row["ngayketthuc"])) . "</td>";
 
-            echo "<td>" . htmlspecialchars(truncateString($row["noidung"])) . "</td>";
+            echo "<td>" . htmlspecialchars(truncateString(strip_tags($row["noidung"])), ENT_QUOTES, 'UTF-8') . "</td>";
             echo "<td><a href='" . $row["file"] . "' download='" . basename($row["file"]) . "' target='_blank'>" . basename($row["file"]) . "</a></td>";
 
             echo "<td>" . date('d/m/Y', strtotime($row["ngaydang"])) . "</td>";

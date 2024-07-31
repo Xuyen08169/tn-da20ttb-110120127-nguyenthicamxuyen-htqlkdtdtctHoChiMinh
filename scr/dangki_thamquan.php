@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,135 +6,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dang ki tham quan</title>
     <style>
-        body {
-            background: #ffdf43;
-            font-family: Arial, sans-serif;
-        }
+    body {
+        background: #ffdf43;
+        font-family: Arial, sans-serif;
+    }
 
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            max-width: 800px;
-            margin: 46px 322px;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        max-width: 800px;
+        margin: 46px 322px;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-        .form1 {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
+    .form1 {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
 
-        .form-column {
-            display: flex;
-            flex-direction: column;
-            width: 48%;
-        }
+    .form-column {
+        display: flex;
+        flex-direction: column;
+        width: 48%;
+    }
 
-        label {
-            margin-top: 10px;
-        }
+    label {
+        margin-top: 10px;
+    }
 
-        input,
-        textarea,
-        button {
-            padding: 8px;
-            margin-top: 5px;
-            border-radius: 6px;
-            background-color: #f1f1f1f2;
-            border: 1px solid #22173c87;
-        }
+    input,
+    textarea,
+    button {
+        padding: 8px;
+        margin-top: 5px;
+        border-radius: 6px;
+        background-color: #f1f1f1f2;
+        border: 1px solid #22173c87;
+    }
 
-        .button {
-            margin: 10px auto;
-            width: 100px;
-            color: #ffffff;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
+    .button {
+        margin: 10px auto;
+        width: 100px;
+        color: #ffffff;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
 
-        .button.register {
-            background: #d30505;
-        }
+    .button.register {
+        background: #d30505;
+    }
 
-        .button.print {
-            background: #FF8F00;
-        }
+    .button.print {
+        background: #FF8F00;
+    }
 
-        .button.reset {
-            background: #6636ff;
-        }
+    .button.reset {
+        background: #6636ff;
+    }
 
-        .button.thoat {
-            background: #45474B;
-        }
+    .button.thoat {
+        background: #45474B;
+    }
 
-        .button:hover {
-            background: #003285;
-        }
+    .button:hover {
+        background: #003285;
+    }
 
-        .button:disabled {
-            background: #45474B;
-            cursor: not-allowed;
-        }
+    .button:disabled {
+        background: #45474B;
+        cursor: not-allowed;
+    }
 
-        .btu {
-            display: flex;
-            justify-content: center;
-            gap: 18px;
-        }
+    .btu {
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+    }
     </style>
     <script>
-        function confirmRegistration() {
-            if (confirm("Bạn có muốn đăng kí không?")) {
-                document.getElementById("registrationForm").submit();
+    function confirmRegistration() {
+        if (confirm("Bạn có muốn đăng kí không?")) {
+            document.getElementById("registrationForm").submit();
+        }
+    }
+
+    function printForm() {
+        window.print();
+    }
+
+    function resetForm() {
+        document.getElementById("registrationForm").reset();
+        document.getElementById("agreeCheckbox").checked = false;
+        document.getElementById("registerButton").disabled = true;
+    }
+
+    function toggleSubmitButton() {
+        const checkbox = document.getElementById("agreeCheckbox");
+        const button = document.getElementById("registerButton");
+        button.disabled = !checkbox.checked;
+    }
+
+    function validateForm() {
+        const fields = ["hoten", "sodienthoai", "diachi", "email", "tendoan", "ngaythamquan", "soluong"];
+        for (let field of fields) {
+            if (!document.getElementById(field).value) {
+                alert("Tất cả các trường phải được điền đầy đủ.");
+                return false;
             }
         }
-
-        function printForm() {
-            window.print();
-        }
-
-        function resetForm() {
-            document.getElementById("registrationForm").reset();
-            document.getElementById("agreeCheckbox").checked = false;
-            document.getElementById("registerButton").disabled = true;
-        }
-
-        function toggleSubmitButton() {
-            const checkbox = document.getElementById("agreeCheckbox");
-            const button = document.getElementById("registerButton");
-            button.disabled = !checkbox.checked;
-        }
-
-        function validateForm() {
-            const fields = ["hoten", "sodienthoai", "diachi", "email", "tendoan", "ngaythamquan", "soluong"];
-            for (let field of fields) {
-                if (!document.getElementById(field).value) {
-                    alert("Tất cả các trường phải được điền đầy đủ.");
-                    return false;
-                }
-            }
-            confirmRegistration();
-        }
-
-        
+        confirmRegistration();
+    }
     </script>
 </head>
 
 <body>
     <div class="container">
-        <h4 style="text-align: center; font-size: 25px; color: #ff6331;">Phiếu Đăng Kí </br>Tham Quan Khu Di Tích Đền Thờ Bác Trà Vinh</h4>
-        <form id="registrationForm" enctype="multipart/form-data" action="xuly_dkthamquan.php" name="sukien" method="post">
+        <h4 style="text-align: center; font-size: 25px; color: #ff6331;">Phiếu Đăng Kí </br>Tham Quan Khu Di Tích Đền
+            Thờ Bác Trà Vinh</h4>
+        <form id="registrationForm" enctype="multipart/form-data" action="xuly_dkthamquan.php" name="sukien"
+            method="post">
             <div class="form1">
                 <div class="form-column">
+                    <label for="hoten">id:</label>
+                    <input type="text" id="idtq" name="idtq" readonly>
+
                     <label for="hoten">Họ tên:</label>
                     <input type="text" id="hoten" name="hoten" required>
 
@@ -157,7 +158,8 @@
                     <input type="date" id="ngaythamquan" name="ngaythamquan" required>
 
                     <label for="soluong">Số lượng người:</label>
-                    <input type="number" id="soluong" name="soluong" min="1" required>
+                    <input type="number" id="soluong" name="soluong" min="2" required>
+
 
                     <label for="ghichu">Ghi chú:</label>
                     <textarea id="ghichu" name="ghichu"></textarea>

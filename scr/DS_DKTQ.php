@@ -2,123 +2,120 @@
 include("ketnoi.php");
 ?>
 <style>
+   /* CSS cho toastr */
+.toast {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px; /* Kích thước chữ */
+    font-weight: bold; /* Chữ in đậm */
+    padding: 15px; /* Mở rộng kích thước hộp thông báo */
+    max-width: 600px; /* Kích thước tối đa của hộp thông báo */
+    width: 100%; /* Chiếm toàn bộ chiều ngang của màn hình */
+    box-sizing: border-box; /* Đảm bảo padding không làm mở rộng kích thước tổng */
+}
 
+/* Thay đổi màu nền và chữ cho thông báo thành công */
+.toast-success {
+    background-color: #28a745; /* Màu nền của thông báo thành công */
+    color: #ffffff; /* Màu chữ của thông báo thành công */
+}
 
+/* Thay đổi màu nền và chữ cho thông báo lỗi */
+.toast-error {
+    background-color: #dc3545; /* Màu nền của thông báo lỗi */
+    color: #ffffff; /* Màu chữ của thông báo lỗi */
+}
 
-
-    
 </style>
 
 <!-- trang này chứa thông tin của nhân viên đăng nhập vào tài khoản của chính bản thân -->
 <link rel="stylesheet" href="text.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <div class="row">
     <div class="col-lg-12">
         <div class="card mb-4">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary"
-                    style=" font-size: 25px; padding-left: 270px; padding-top:15px;">
-                    DANH SÁCH ĐĂNG KÍ THAM QUAN ĐỀN THỜ</h6>
+                <h6 class="m-0 font-weight-bold text-primary" style="font-size: 25px; padding-left: 270px; padding-top:15px;">
+                    DANH SÁCH ĐĂNG KÍ THAM QUAN ĐỀN THỜ
+                </h6>
             </div>
-
-
-            <!-- <div style="padding-top: 15px; padding-left:15px;">
-                <a href="them_DK.php" style="padding-top: 15px;"><button type="button" class="btn btn-primary"> Thêm mới
-                    </button> </a>
-
-
-            </div> -->
-            </a>
             <div class="table-responsive p-3">
                 <table class="table align-items-center table-flush" id="dataTable">
                     <thead class="thead-light">
                         <tr>
-                            <!-- <th>id</th> -->
                             <th>Tên</th>
                             <th>Số điện thoại</th>
                             <th>Địa chỉ</th>
-                            <!-- <th>Email</th> -->
                             <th>Tên đoàn</th>
                             <th>Ngày tham quan</th>
-                            <th> Số lượng</th>
-
-                            <!-- <th> Ghi chú</th> -->
-                            <th> Trạng thái</th>
+                            <th>Số lượng</th>
+                            <th>Trạng thái</th>
                             <th>Tuỳ chọn</th>
                         </tr>
                     </thead>
-
                     <tbody>
                     <?php
-include("ketnoi.php");
-$sql = "SELECT * FROM dkthamquan";
-$kq = mysqli_query($conn, $sql) or die("Không thể xuất thông tin thiết bị " . mysqli_error($conn));
+                    include("ketnoi.php");
+                    $sql = "SELECT * FROM dkthamquan";
+                    $kq = mysqli_query($conn, $sql) or die("Không thể xuất thông tin thiết bị " . mysqli_error($conn));
 
-// Kiểm tra nếu có dữ liệu
-if (mysqli_num_rows($kq) > 0) {
-    while ($row = mysqli_fetch_array($kq)) {
-        // Lấy dữ liệu từ hàng hiện tại
-        $usern = $row["idtq"];
-        $idtq = $row["idtq"];
-        $trangthai = $row["trangthai"];
+                    if (mysqli_num_rows($kq) > 0) {
+                        while ($row = mysqli_fetch_array($kq)) {
+                            $usern = $row["idtq"];
+                            $idtq = $row["idtq"];
+                            $trangthai = $row["trangthai"];
 
-        echo "<tr>";
-        echo "<td>" . $row["hoten"] . "</td>";
-        echo "<td>" . $row["sdt"] . "</td>";
-        echo "<td>" . $row["diachi"] . "</td>";
-        echo "<td>" . $row["tendoan"] . "</td>";
-        echo "<td>" . date('d/m/Y', strtotime($row["ngaythamquan"])) . "</td>";
-        echo "<td>" . $row["soluong"] . "</td>";
-        echo "<td>" . $trangthai . "</td>";
-        
-        echo "<td class='nut' style=' font-size: 20px;'>
-                <a href='#' class='view-details' data-id='$usern'>
-                    <button style='border: none;background: #faebd700; color: #26355D'>
-                        <ion-icon name='eye-outline'></ion-icon>
-                    </button>
-                </a>";
+                            echo "<tr>";
+                            echo "<td>" . $row["hoten"] . "</td>";
+                            echo "<td>" . $row["sdt"] . "</td>";
+                            echo "<td>" . $row["diachi"] . "</td>";
+                            echo "<td>" . $row["tendoan"] . "</td>";
+                            echo "<td>" . date('d/m/Y', strtotime($row["ngaythamquan"])) . "</td>";
+                            echo "<td>" . $row["soluong"] . "</td>";
+                            echo "<td>" . $trangthai . "</td>";
+                            
+                            echo "<td class='nut' style='font-size: 20px;'>
+                                    <a href='#' class='view-details' data-id='$usern'>
+                                        <button style='border: none;background: #faebd700; color: #26355D'>
+                                            <ion-icon name='eye-outline'></ion-icon>
+                                        </button>
+                                    </a>";
 
-        // Ẩn nút xác nhận và không duyệt nếu trạng thái là "Đã duyệt" hoặc "Không duyệt"
-        if ($trangthai !== "đã duyệt" && $trangthai !== "không duyệt") {
-            echo "<a href='xacnhan.php?user=$usern&id=$idtq'>
-                    <button style='border: none;background: #faebd700; color: #26355D'>
-                      <ion-icon name='checkmark-circle-outline'></ion-icon>
-                    </button>
-                </a>";
-            echo "<a href='khongduyet.php?user=$usern&id=$idtq'>
-                    <button style='border: none;background: #faebd700; color: #26355D'>
-                      <ion-icon name='close-circle-outline'></ion-icon>
-                    </button>
-                </a>";
-        }
+                            if ($trangthai !== "đã duyệt" && $trangthai !== "không duyệt") {
+                                echo "<a href='#' class='approve' data-user='$usern' data-idtq='$idtq'>
+                                        <button class='approve-btn' style='border: none;background: #faebd700; color: #26355D'>
+                                          <ion-icon name='checkmark-circle-outline'></ion-icon>
+                                        </button>
+                                    </a>";
+                                echo "<a href='#' class='disapprove' data-user='$usern' data-idtq='$idtq'>
+                                        <button class='disapprove-btn' style='border: none;background: #faebd700; color: #26355D'>
+                                          <ion-icon name='close-circle-outline'></ion-icon>
+                                        </button>
+                                    </a>";
+                            }
 
-        echo "<a href='xoa_ds_thamquan.php?user=$usern'>
-                    <button style='border: none;background: #faebd700; color: #26355D'>
-                        <ion-icon name='trash'></ion-icon>
-                    </button>
-                </a>
-              </td>";
-        echo "</tr>";
-    }
-} else {
-    echo "Không có dữ liệu để hiển thị.";
-}
-?>
-
-
+                            echo "<a href='xoa_ds_thamquan.php?user=$usern'>
+                                    <button style='border: none;background: #faebd700; color: #26355D'>
+                                        <ion-icon name='trash'></ion-icon>
+                                    </button>
+                                  </td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "Không có dữ liệu để hiển thị.";
+                    }
+                    ?>
                     </tbody>
                 </table>
-
             </div>
-
         </div>
-
     </div>
-
 </div>
 
 <!-- Modal -->
-
-
 <div class="modal fade" id="eventDetailModal" tabindex="-1" role="dialog" aria-labelledby="eventDetailModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -138,9 +135,6 @@ if (mysqli_num_rows($kq) > 0) {
     </div>
 </div>
 <!-- End Modal -->
-
-
-
 
 <?php include ("footer.php"); ?>
 <script>
@@ -172,39 +166,62 @@ $(document).ready(function() {
             "searchPlaceholder": "Nhập từ khóa..."
         },
         "pageLength": 10,
-
-
     });
-});
-//----POPUP-------------------------------------------------------
 
-$(document).ready(function() {
-    // Bắt sự kiện click vào nút xem chi tiết
     $('.view-details').on('click', function(e) {
-        e.preventDefault(); // Ngăn không cho link điều hướng trang
-
-        // Lấy ID của sự kiện từ thuộc tính data-id
+        e.preventDefault();
         var eventId = $(this).data('id');
-
-        // Gửi yêu cầu AJAX để lấy thông tin chi tiết
         $.ajax({
-            url: 'HTthongtin_danhsach.php', // File PHP xử lý yêu cầu
+            url: 'HTthongtin_danhsach.php',
             type: 'GET',
-            data: {
-                id: eventId
-            },
+            data: { id: eventId },
             success: function(response) {
-                // Hiển thị nội dung trả về trong modal
                 $('#eventDetailModal .modal-body').html(response);
-                // Hiển thị modal
                 $('#eventDetailModal').modal('show');
             },
             error: function(xhr, status, error) {
-                // Xử lý lỗi (nếu có)
-                alert('Đã xảy ra lỗi khi lấy dữ liệu.');
+                toastr.error('Đã xảy ra lỗi khi lấy dữ liệu.');
+            }
+        });
+    });
+
+    $('.approve').on('click', function(e) {
+        e.preventDefault();
+        var userId = $(this).data('user');
+        var idtq = $(this).data('idtq');
+        $.ajax({
+            url: 'xacnhan.php',
+            type: 'GET',
+            data: { user: userId, id: idtq },
+            success: function(response) {
+                toastr.success('Duyệt đăng kí. Email xác nhận đã được gửi.');
+                // Ẩn nút duyệt và không duyệt
+                $(e.target).closest('tr').find('.approve-btn, .disapprove-btn').hide();
+            },
+            error: function(xhr, status, error) {
+                toastr.error('Đã xảy ra lỗi khi duyệt.');
+            }
+        });
+    });
+
+    $('.disapprove').on('click', function(e) {
+        e.preventDefault();
+        var userId = $(this).data('user');
+        var idtq = $(this).data('idtq');
+        $.ajax({
+            url: 'khongduyet.php',
+            type: 'GET',
+            data: { user: userId, id: idtq },
+            success: function(response) {
+                toastr.success('Duyệt đăng kí. Email xác nhận đã được gửi.');
+                // Ẩn nút duyệt và không duyệt
+                $(e.target).closest('tr').find('.approve-btn, .disapprove-btn').hide();
+            },
+            error: function(xhr, status, error) {
+                toastr.error('Đã xảy ra lỗi khi duyệt.');
             }
         });
     });
 });
-// ----------end popup-----------------------------------------
+
 </script>

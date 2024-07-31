@@ -21,7 +21,8 @@ if (isset($_GET['id'])) {
         // Hiển thị thông tin chi tiết sự kiện
         echo "<p><strong>ID:</strong> " . htmlspecialchars($event['idtintuc']) . "</p>";
         echo "<p><strong>Tiêu đề:</strong> " . htmlspecialchars($event['tieude']) . "</p>";
-        echo "<p><strong>Nội dung:</strong> " . nl2br(htmlspecialchars($event['noidung'])) . "</p>";
+        echo "<p><strong>Nội dung:</strong> " . nl2br(strip_tags(htmlspecialchars_decode($event['noidung']))) . "</p>";
+
         echo "<p><strong>Ngày đăng:</strong> " . date('d/m/Y', strtotime($event['ngaydang'])) . "</p>";
 
         echo "<p><strong></strong> <img src='" . htmlspecialchars($anhtt_hienthi) . "' 

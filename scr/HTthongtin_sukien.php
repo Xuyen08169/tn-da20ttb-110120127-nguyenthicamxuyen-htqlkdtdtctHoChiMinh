@@ -19,7 +19,7 @@ if (isset($_GET['id'])) {
         echo "<p><strong>Tên sự kiện:</strong> " . htmlspecialchars($event['tensukien']) . "</p>";
         echo "<p><strong>Ngày bắt đầu:</strong> " . date('d/m/Y', strtotime($event['ngaybatdau'])) . "</p>";
         echo "<p><strong>Ngày kết thúc:</strong> " . date('d/m/Y', strtotime($event['ngayketthuc'])) . "</p>";
-        echo "<p><strong>Nội dung:</strong> " . nl2br(htmlspecialchars($event['noidung'])) . "</p>";
+        echo "<p><strong>Nội dung:</strong> " . nl2br(strip_tags(htmlspecialchars_decode($event['noidung']))) . "</p>";
         echo "<p><strong>File:</strong> <a href='" . htmlspecialchars($event['file']) . "' download='" . basename($event['file']) . "' target='_blank'>" . basename($event['file']) . "</a></p>";
         echo "<p><strong>Ngày đăng:</strong> " . date('d/m/Y', strtotime($event['ngaydang'])) . "</p>";
         

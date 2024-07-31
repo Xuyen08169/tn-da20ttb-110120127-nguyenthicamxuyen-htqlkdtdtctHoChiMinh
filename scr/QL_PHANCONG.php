@@ -1,3 +1,4 @@
+
 <?php include ("header.php");
 include ("ketnoi.php");
 ?>
@@ -44,6 +45,7 @@ include ("ketnoi.php");
                             <th>Người trực cũ</th>
                             <th> Lý do</th>
 
+                            <th> DS tham quan</th>
                             <th> Người duyệt</th>
                             <th> Ngày duyệt</th>
 
@@ -73,6 +75,11 @@ include ("ketnoi.php");
                             $kq3 = mysqli_query($conn, $sql3) or die("Không thể xuất thông tin " . mysqli_error());
                             $sukien = mysqli_fetch_array($kq3);
 
+                            $idtq = $row["idtq"];//////////nếu không có khóa ngoại thì ko cần dùng đến
+                            $sql4 = "SELECT * FROM dkthamquan WHERE idtq='" . $idtq . "'";
+                            $kq4 = mysqli_query($conn, $sql4) or die("Không thể xuất thông tin " . mysqli_error());
+                            $dkthamquan = mysqli_fetch_array($kq4);
+
 
                             echo "<tr>";
                             // echo "<td>" . $row["idpc"] . "</td>";
@@ -83,6 +90,8 @@ include ("ketnoi.php");
                             echo "<td> " . $taikhoan["hoten"] . "</td>";
                             echo "<td>" . date('d/m/Y', strtotime($lichtruc["ngaytruc"])) . "</td>";
                             // echo "<td> " . $sukien["tensukien"] . "</td>";
+
+                           
                         
                             // ----------------------------------------
                         
@@ -106,6 +115,11 @@ include ("ketnoi.php");
 
                             echo "<td>" . $row["nguoitruccu"] . "</td>";
                             echo "<td>" . $row["lydo"] . "</td>";
+                            if ($dkthamquan !== null && isset($dkthamquan["tendoan"])) {
+                                echo "<td>" . $dkthamquan["tendoan"] . "</td>";
+                            } else {
+                                echo "<td> Không có đoàn tham quan </td>"; // Hoặc thông báo lỗi khác tùy ý của bạn
+                            }
                             echo "<td>" . $row["nguoiduyet"] . "</td>";
 
                             echo "<td>";

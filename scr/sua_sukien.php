@@ -66,6 +66,7 @@ CKEDITOR.replace('editor1', {
                     <label>ngày kết thúc:</label>
                     <input type="date" name="ngayketthuc" value="<?php echo $row["ngayketthuc"]; ?>"/>
                 </div>
+                
 
                 <div class="txt-gv-lb">
                     <label>Người đăng:</label>
@@ -99,6 +100,7 @@ CKEDITOR.replace('editor1', {
                 <div class="txt-gv-lb">
                     <label>Ngày đăng:</label>
                     <input type="date" name="ngaydang" value="<?php echo $row["ngaydang"]; ?>"/>
+                    
                 </div>
             </div>
 

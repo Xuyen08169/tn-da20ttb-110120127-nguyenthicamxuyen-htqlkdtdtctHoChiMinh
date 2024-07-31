@@ -1,3 +1,4 @@
+
 <?php
 include("header.php");
 ?>
@@ -52,12 +53,12 @@ function kiemtra() {
         document.forms["themtaikhoan"]["matkhau"].setAttribute('required', 'required');
         return false;
     }
-    // if (document.forms["themtaikhoan"]["hinhanhht"].value == "") {
-    //     callAlert('Vui lòng chọn hình ảnh!', 'error', '1500', '');
-    //     //alert('Vui lòng nhập họ tên!', 'error', '1500', '');
-    //     document.forms["themtaikhoan"]["hinhanhht"].setAttribute('required', 'required');
-    //     return false;
-    // }
+    if (document.forms["themtaikhoan"]["hinhanhht"].value == "") {
+        callAlert('Vui lòng chọn hình ảnh!', 'error', '1500', '');
+        //alert('Vui lòng nhập họ tên!', 'error', '1500', '');
+        document.forms["themtaikhoan"]["hinhanhht"].setAttribute('required', 'required');
+        return false;
+    }
 
 
     return true;
@@ -96,9 +97,9 @@ function kiemtra() {
                 <div class="txt-gv-lb">
                     <label>Giới tính:</label>
                     <select name="gioitinh">
-                        <option value="">Nam</option>
-                        <option value="">Nữ</option>
-                        <option value="">Giới tính khác</option>
+                        <option value="nam">Nam</option>
+                        <option value="nu">Nữ</option>
+                        <option value="gioitinhkhac">Giới tính khác</option>
                     </select>
 
                 </div>
@@ -159,11 +160,7 @@ function kiemtra() {
                 </div>
                 <div class="txt-gv-lb">
                     <label>Quyền:</label>
-                    <select name="quyen">
-                        <option value="">0</option>
-                        <option value="">1</option>
-                     
-                    </select>
+                    <input type="text" name="quyen"></input>
                 </div>
 
 

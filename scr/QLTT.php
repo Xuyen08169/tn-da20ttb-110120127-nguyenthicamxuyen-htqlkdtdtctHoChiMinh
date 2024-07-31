@@ -18,10 +18,7 @@ include ("ketnoi.php");
 
 
             <div style="padding-top: 15px; padding-left:15px;">
-                <a href="them_tintuc.php" style="padding-top: 15px;"><button type="button" class="btn btn-primary"> Thêm
-                        mới </button> </a>
-
-
+                <a href="them_tintuc.php" style="padding-top: 15px;"><button type="button" class="btn btn-primary"> Thêm mới </button> </a>
             </div>
             </a>
 
@@ -74,8 +71,9 @@ include ("ketnoi.php");
                             $usern = $row["idtintuc"]; // Gán dữ liệu cột username vào biến $usern
                         
                             echo "<td>" . $row["tieude"] . "</td>";
+                            
+                            echo "<td>" . htmlspecialchars(truncateString(strip_tags($row["noidung"])), ENT_QUOTES, 'UTF-8') . "</td>";
 
-                            echo "<td>" . htmlspecialchars(truncateString($row["noidung"]), ENT_QUOTES, 'UTF-8') . "</td>";
 
                             echo "<td>" . date('d/m/Y', strtotime($row["ngaydang"])) . "</td>";
 

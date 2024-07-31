@@ -1,3 +1,4 @@
+
 <?php
 include ("header.php");
 ?>
@@ -48,7 +49,28 @@ include ("header.php");
                         ?>
                     </select>
                 </div> -->
+                <div class="txt-gv-lb">
+                    <label> DS tham quan:</label>
+                    <!-- <input type="text" name="id"> -->
+                    <select name="idtq">
+                    <?php
+                            $sql = "SELECT idtq, tendoan FROM dkthamquan";
+                            $kq = mysqli_query($conn, $sql) or die("Không thể thêm: " . mysqli_error($conn));
+                            echo "<option value=\"\"></option>";
+                            while ($row = mysqli_fetch_assoc($kq)) {
+                                $idtq = $row['idtq'];
+                                $tendoan = $row['tendoan'];
+                               
+                                echo "<option value=\"$idtq\">$tendoan</option>";
 
+                                }
+                            ?>
+                    </select>
+                <!-- </input> -->
+                        
+
+                </div>
+                
 
 
                 <div class="#">

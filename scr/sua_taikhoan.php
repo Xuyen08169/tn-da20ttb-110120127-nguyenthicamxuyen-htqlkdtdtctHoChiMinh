@@ -1,3 +1,4 @@
+
 <?php
 include("header.php");
 
@@ -102,12 +103,7 @@ $row = mysqli_fetch_array($kq);
                 </div>
                 <div class="txt-gv-lb">
                     <label>Quyền:</label>
-                    <select name="gioitinh" value="<?php echo $row["quyen"]; ?>">
-                        <option>0</option>
-                        <option>1</option>
-                      
-
-                    </select>
+                    <input type="text" name="quyen" value="<?php echo $row["quyen"]; ?>" />
                 </div>
             </div>
 

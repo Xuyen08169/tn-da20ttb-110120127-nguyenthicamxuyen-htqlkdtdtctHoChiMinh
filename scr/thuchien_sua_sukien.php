@@ -19,7 +19,7 @@ move_uploaded_file($_FILES["file"]["tmp_name"], $duongdan);
 $files = $duongdan;
 
 // Update academic department in the database
-$sql = "UPDATE sukien SET tensukien = '$tensukien', ngaybatdau = '$ngaybatdau', ngayketthuc = '$ngayketthuc', file = '$files',noidung = '$noidung', idnhanvien = '$idnhanvien'
+$sql = "UPDATE sukien SET tensukien = '$tensukien', ngaybatdau = '$ngaybatdau', ngayketthuc = '$ngayketthuc', file = '$files',noidung = '$noidung',ngaydang = '$ngaydang', idnhanvien = '$idnhanvien'
  WHERE id = '$id'";
 $kq = mysqli_query($conn, $sql) or die("Không thể cập nhật: " . mysqli_error($conn));
 
