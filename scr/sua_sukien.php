@@ -69,10 +69,10 @@ CKEDITOR.replace('editor1', {
                 
 
                 <div class="txt-gv-lb">
-                    <label>Người đăng:</label>
+                    <label>Người trực:</label>
                     <select name="idnhanvien">
                             <?php
-                $sql = "SELECT idnhanvien, hoten FROM taikhoan";
+                $sql = "SELECT idnhanvien, hoten FROM taikhoan WHERE quyen = 1";
                 $kq = mysqli_query($conn, $sql) or die("Không thể thêm: " . mysqli_error($conn));
                 while ($row_tt = mysqli_fetch_assoc($kq)) {
                     $idnhanvien = $row_tt['idnhanvien'];

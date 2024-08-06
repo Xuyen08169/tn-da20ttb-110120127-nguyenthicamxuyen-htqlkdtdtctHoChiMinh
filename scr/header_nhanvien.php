@@ -328,6 +328,13 @@ include ("ketnoi.php");
                         </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="LICHTRUC_SUKIEN.php">
+                            <span class="icon-bg"> <i class="ti ti-calendar-check" style="font-size:25px;"></i> </span>
+                            <span class="menu-title"> LỊCH TRỰC SỰ KIỆN</span>
+                        </a>
+                    </li>
+
 
                     <li class="nav-item">
                         <a class="nav-link" href="hoso_canhan.php">

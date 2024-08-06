@@ -1,4 +1,4 @@
-<?php include ("header.php"); 
+<?php include ("header_nhanvien.php"); 
 include("ketnoi.php");
 ?>
 
@@ -13,12 +13,12 @@ include("ketnoi.php");
             SỰ KIỆN TẠI ĐỀN THỜ</h6>
             </div>
            
-         
+<!--          
             <div style="padding-top: 15px; padding-left:15px;">
             <a href="them_sukien.php" style="padding-top: 15px;"><button type="button" class="btn btn-primary" > Thêm mới </button> </a>
 
 
-            </div>
+            </div> -->
 
             <div class="table-responsive p-3">
                 <table class="table align-items-center table-flush" id="dataTable">
@@ -32,7 +32,7 @@ include("ketnoi.php");
                             <th>File</th>
                             <th>Ngày đăng</th>
                             <th>Người trực</th>
-                            <th>Tuỳ chọn</th>
+                      
                         </tr>
                     </thead>
                    
@@ -79,12 +79,12 @@ function truncateString($string, $limit = 15) {
             echo "<td> " . $taikhoan["hoten"] . "</td>";
 
           
-         echo "<td class='nut' style=' font-size: 20px;'>
-        <a href='#' class='view-details' data-id='$usern'><button style=' border: none;background: #faebd700; color: #26355D; '><ion-icon name='eye-outline'></ion-icon></button></a>
-        <a href='sua_sukien.php?user=$usern'><button style=' border: none;background: #faebd700; color: #26355D'><ion-icon name='pencil'></ion-icon></button></a>
-        <a href='xoa_sukien.php?user=$usern'><button style=' border: none;background: #faebd700; color: #26355D'><ion-icon name='trash'></ion-icon></button></a>
-    </td>";
-            echo "</tr>";
+    //      echo "<td class='nut' style=' font-size: 20px;'>
+    //     <a href='#' class='view-details' data-id='$usern'><button style=' border: none;background: #faebd700; color: #26355D; '><ion-icon name='eye-outline'></ion-icon></button></a>
+    //     <a href='sua_sukien.php?user=$usern'><button style=' border: none;background: #faebd700; color: #26355D'><ion-icon name='pencil'></ion-icon></button></a>
+    //     <a href='xoa_sukien.php?user=$usern'><button style=' border: none;background: #faebd700; color: #26355D'><ion-icon name='trash'></ion-icon></button></a>
+    // </td>";
+    //         echo "</tr>";
         }
         ?>
                     </tbody>
@@ -119,7 +119,7 @@ function truncateString($string, $limit = 15) {
 
 
 
-<?php include ("footer.php"); ?>
+<?php include ("footer_nhanvien.php"); ?>
 <script>
 	$(document).ready(function () {
 		$('#dataTable').DataTable({

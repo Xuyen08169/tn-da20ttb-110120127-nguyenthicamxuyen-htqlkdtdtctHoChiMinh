@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     <label>Người đăng:</label>
     <select name="idnhanvien">
         <?php
-        $sql = "SELECT idnhanvien, hoten FROM taikhoan WHERE quyen = 0";
+        $sql = "SELECT idnhanvien, hoten FROM taikhoan WHERE quyen = 1";
         $kq = mysqli_query($conn, $sql) or die("Không thể thêm: " . mysqli_error($conn));
         while ($row = mysqli_fetch_assoc($kq)) {
             $idnhanvien = $row['idnhanvien'];

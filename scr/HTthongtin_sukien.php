@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
         echo "<p><strong>File:</strong> <a href='" . htmlspecialchars($event['file']) . "' download='" . basename($event['file']) . "' target='_blank'>" . basename($event['file']) . "</a></p>";
         echo "<p><strong>Ngày đăng:</strong> " . date('d/m/Y', strtotime($event['ngaydang'])) . "</p>";
         
-        echo "<p><strong>Tên nhân viên:</strong> " . htmlspecialchars($event['hoten']) . "</p>";
+        echo "<p><strong>Nhân viên trực sự kiện:</strong> " . htmlspecialchars($event['hoten']) . "</p>";
     } else {
         echo "<p>Không tìm thấy sự kiện.</p>";
     }
